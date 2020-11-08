@@ -1,9 +1,8 @@
-.table {
-    cursor: pointer;
-    
+.container {
+    margin-bottom: 5px;
 
 }
 
-.table:hover{
+.container:hover{
     color:red;
 }

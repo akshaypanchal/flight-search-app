@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {addFlightDetails} from "../../action/action";
 
@@ -41,9 +40,9 @@ const Input = ({searchFlightDetails}) => {
         <div>
             {/* creating the input and button for  user interaction */}
             <label>Origin: </label>
-            <input id="originCity" onChange={addOriginCity} placeholder="Enter the City" />
+            <input id="originCity" onChange={addOriginCity} placeholder="Enter the City" value={originCity} required />
             <label>Destination: </label>
-            <input id="destinationCity" onChange={addDestinationCity} placeholder="Enter the City" />
+            <input id="destinationCity" onChange={addDestinationCity} placeholder="Enter the City" value={destinationCity} required/>
             <button onClick={addFlightDetails}>Search the Flights</button>
         </div>
     );

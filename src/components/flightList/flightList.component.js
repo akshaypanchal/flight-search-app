@@ -22,9 +22,7 @@ const FlightList = ({ flightListData }) => {
                         <Col>Carrier Name</Col>
                         <Col>Departure Date</Col>
                         <Col>Departure Time</Col>
-                        <Col>Arrival Date</Col>
-                        <Col>Arrival Time</Col>
-                        <Col>Time Duration</Col>
+                        <Col>Flight Type</Col>
                         <Col>#</Col>
                 </Row>
 
@@ -35,6 +33,7 @@ const FlightList = ({ flightListData }) => {
                 flightListData.Quotes.map((flight, index) => {
                     return <Flight key={flight.QuoteId} flight={flight} index={index} originCity={flightListData.Places[0].CityName}
                             destinationCity={flightListData.Places[1]} Carriers = {flightListData.Carriers}
+                            directFlight = {flight.Direct} 
                              />
                 })
             }
