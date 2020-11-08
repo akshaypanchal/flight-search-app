@@ -1,19 +1,32 @@
-import Card from 'react-bootstrap/Card';
+import './flight.style.css';
 import Table from 'react-bootstrap/esm/Table';
+import {Container, Col, Row} from 'react-bootstrap';
 
-const Flight = ({ flight, index }) => {
+const Flight = ({ flight, originCity, destinationCity, Carriers }) => {
 
     return (
-        <Table>
-            <th>{flight.QuoteId}</th>
-            <th>Mumbai</th>
-            <th>Toronto</th>
-            <th>{flight.MinPrice}</th>
-            <th>{flight.OutboundLeg.CarrierIds[0]}</th>
-            <th>{flight.OutboundLeg.DepartureDate}</th>
-            <th>{flight.QuoteDateTime}</th>
-        </Table>
+        <Container className="table" onClick={()=>{console.log("Clicked!!!")}}>
+        <Row>
+            <Col>{flight.QuoteId}</Col>
+            <Col>{originCity}</Col>
+            <Col>{destinationCity}</Col>
+            <Col>{flight.MinPrice}$</Col>
+            <Col>
+                {
+                    Carriers.map(item=>{
+                        if(item.CarrierId===flight.OutboundLeg.CarrierIds[0]){
+                            // console.log(item);
+                            return item.Name;
+                        }
+                    })
+                
+                }
+            </Col>
+            <Col>{flight.OutboundLeg.DepartureDate}</Col>
+            <Col>{flight.QuoteDateTime}</Col>
+            </Row>
+        </Container>
     );
-}
+}   
 
 export default Flight;

@@ -1,9 +1,9 @@
 import Flight from '../Flights/flight.component';
-import Table from 'react-bootstrap/Table';
 import ScrollFlightDetails from '../scrollFlightDetail/scrollFlightDetails.component';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const FlightList = ({ flightListData }) => {
-    //   console.log(flightListData)
+      console.log(flightListData)
 
 
     return (
@@ -11,28 +11,26 @@ const FlightList = ({ flightListData }) => {
         <div>
             <h3>Flight Details:</h3>
 
-            <Table >
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Origin City</th>
-                        <th>Destination City</th>
-                        <th>Minimum Price</th>
-                        <th>Carrier ID</th>
-                        <th>Departure Date</th>
-                        <th>Arrival Date</th>
-                    </tr>
-                    <tbody>
-                        <tr>           </tr>
-                    </tbody>
-                </thead>
+            <Container >
+                <Row>
 
-            </Table>
+                        <Col>#</Col>
+                        <Col>Origin City</Col>
+                        <Col>Destination City</Col>
+                        <Col>Minimum Price</Col>
+                        <Col>Carrier ID</Col>
+                        <Col>Departure Date</Col>
+                        <Col>Arrival Date</Col>
+
+                </Row>
+
+            </Container>
 
             <ScrollFlightDetails>
             {
                 flightListData.Quotes.map((flight, index) => {
-                    return <Flight key={flight.QuoteId} flight={flight} index={index} />
+                    return <Flight key={flight.QuoteId} flight={flight} index={index} originCity={flightListData.Places[0].CityName}
+                            destinationCity={flightListData.Places[1].CityName} Carriers = {flightListData.Carriers} />
                 })
             }
             </ScrollFlightDetails>

@@ -1,0 +1,9 @@
+.table {
+    cursor: pointer;
+    
+
+}
+
+.table:hover{
+    color:red;
+}
