@@ -1,8 +1,12 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {addFlightDetails} from "../../action/action";
 
+const Input = ({searchFlightDetails}) => {
 
-const Input = () =>{
+    // Intializing dispatch function here from useDispatch
+    const dispatch = useDispatch();
 
     // create the local store for storing the user value for origin and destination city name
     const [originCity, setOriginCity] = useState("");
@@ -16,39 +20,30 @@ const Input = () =>{
 
     // Update the destination city to the local store
     const addDestinationCity = () => {
-        let  destinationCityData= document.getElementById("destinationCity").value;
+        let destinationCityData = document.getElementById("destinationCity").value;
         setDestinationCity(destinationCityData);
     }
 
     // Function for searching the flight details from the api using axios
-    const searchFlightDetails = () =>{
+    const addFlightDetails = () => {
 
-        const options = {
-            method: 'GET',
-            url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/CA/CAD/en-US/${originCity}/${destinationCity}/2020-11`,
-            params: {inboundpartialdate: '2020-11'},
-            headers: {
-              'x-rapidapi-key': 'bc672e1d75msh8d1d6b258eaa990p101570jsn50767165a40f',
-              'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
-            }
-          };
-          
-          axios.request(options).then(function (response) {
-              console.log(response.data);
-          }).catch(function (error) {
-              console.error(error);
-          });
+        // calling the parent componet method to fetch the flight details from the WEB API
+        searchFlightDetails({originCity, destinationCity});
+        
+        // Clear the local store of originCity and destinationCity to empty
+        setOriginCity("");
+        setDestinationCity("");
 
     }
 
-    return(
+    return (
         <div>
             {/* creating the input and button for  user interaction */}
-            <label>Origin</label>
-            <input id="originCity" onChange={addOriginCity} placeholder="Enter the City"/>
-            <label>Destination</label>
+            <label>Origin: </label>
+            <input id="originCity" onChange={addOriginCity} placeholder="Enter the City" />
+            <label>Destination: </label>
             <input id="destinationCity" onChange={addDestinationCity} placeholder="Enter the City" />
-            <button onClick={searchFlightDetails}>Search the Flights</button>
+            <button onClick={addFlightDetails}>Search the Flights</button>
         </div>
     );
 }

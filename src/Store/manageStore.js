@@ -1,10 +1,7 @@
 import {createStore} from 'redux';
 import rootReducer from '../reducer/rootReducer';
 
-// default store for application
-const defaultState = {
-    flightDetails:[]
-}
+
 
 const store = createStore(rootReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
