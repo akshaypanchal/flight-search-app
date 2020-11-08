@@ -1,6 +1,7 @@
 import Flight from '../Flights/flight.component';
 import ScrollFlightDetails from '../scrollFlightDetail/scrollFlightDetails.component';
 import { Col, Container, Row } from 'react-bootstrap';
+import './flightlist.style.css';
 
 const FlightList = ({ flightListData }) => {
       console.log(flightListData)
@@ -11,17 +12,20 @@ const FlightList = ({ flightListData }) => {
         <div>
             <h3>Flight Details:</h3>
 
-            <Container >
+            <Container className="container">
                 <Row>
 
                         <Col>#</Col>
                         <Col>Origin City</Col>
                         <Col>Destination City</Col>
                         <Col>Minimum Price</Col>
-                        <Col>Carrier ID</Col>
+                        <Col>Carrier Name</Col>
                         <Col>Departure Date</Col>
+                        <Col>Departure Time</Col>
                         <Col>Arrival Date</Col>
-
+                        <Col>Arrival Time</Col>
+                        <Col>Time Duration</Col>
+                        <Col>#</Col>
                 </Row>
 
             </Container>
@@ -30,7 +34,8 @@ const FlightList = ({ flightListData }) => {
             {
                 flightListData.Quotes.map((flight, index) => {
                     return <Flight key={flight.QuoteId} flight={flight} index={index} originCity={flightListData.Places[0].CityName}
-                            destinationCity={flightListData.Places[1].CityName} Carriers = {flightListData.Carriers} />
+                            destinationCity={flightListData.Places[1]} Carriers = {flightListData.Carriers}
+                             />
                 })
             }
             </ScrollFlightDetails>

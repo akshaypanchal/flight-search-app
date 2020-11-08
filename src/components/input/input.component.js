@@ -3,6 +3,7 @@ import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {addFlightDetails} from "../../action/action";
 
+
 const Input = ({searchFlightDetails}) => {
 
     // Intializing dispatch function here from useDispatch
