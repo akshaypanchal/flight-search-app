@@ -2,7 +2,6 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './components/input/input.component';
 import { useState } from 'react';
-import {useSelector} from 'react-redux';
 import axios from 'axios';
 import FlightList from './components/flightList/flightList.component';
 
@@ -11,21 +10,17 @@ function App() {
   // local store for storing the fetched flight details from the WEB API
   const [flightDetails, setFlightDetails] = useState({});
   
-  const newState  = useSelector(state=>state.flightDetails);
-
-  console.log("Updated State");
-  console.log(newState);
 
   // function for fetching the flight details from WEB API
-  const searchFlightDetails = ({ originCity, destinationCity }) => {
+  const searchFlightDetails = ({ originCity, destinationCity, departureDate }) => {
 
     // checking the condition if user input for originCity and destinationCity is empty or not
     if (originCity !== "" || destinationCity !== "") {
 
       const options = {
         method: 'GET',
-        url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/CA/CAD/en-US/${originCity}/${destinationCity}/2020-11`,
-        params: { inboundpartialdate: '2020-11' },
+        url: `https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/CA/CAD/en-US/${originCity}/${destinationCity}/${departureDate}`,
+        // params: { inboundpartialdate: '2020-11' },
         headers: {
           'x-rapidapi-key': 'bc672e1d75msh8d1d6b258eaa990p101570jsn50767165a40f',
           'x-rapidapi-host': 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
@@ -57,6 +52,7 @@ function App() {
       { (Object.keys(flightDetails).length >0) ?
         <FlightList flightListData={flightDetails} /> : null
       }
+      
     </div>
   );
 }
