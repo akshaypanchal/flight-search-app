@@ -4,8 +4,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import './flightlist.style.css';
 
 const FlightList = ({ flightListData }) => {
-      console.log(flightListData)
-
 
     return (
 

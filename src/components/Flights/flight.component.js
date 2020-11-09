@@ -1,16 +1,24 @@
 import './flight.style.css';
 import {Container, Col, Row} from 'react-bootstrap';
-import FlightList from '../flightList/flightList.component';
+import {addFlightDetails} from "../../action/action";
+import {useDispatch} from 'react-redux';
 
 const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight }) => {
+
+    const dispatch =  useDispatch();
 
     // fetching the time stamp from the Date Object for departure
     const departureTime =  new Date(flight.OutboundLeg.DepartureDate).toLocaleTimeString('en-US');
 
 
     // calculating the date from the data object for departure
-    const departureDate =  new Date(flight.OutboundLeg.DepartureDate).toDateString('en-US')
+    const departureDate =  new Date(flight.OutboundLeg.DepartureDate).toDateString('en-US');
 
+
+    const addFlightDataToWishList =  () =>{
+
+        dispatch(addFlightDetails({flight, originCity, destinationCity, Carriers, directFlight}));
+    }
 
 
     return (
@@ -34,9 +42,8 @@ const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight })
             <Col>{departureDate}</Col>
             <Col>{departureTime}</Col>
             <Col>{(directFlight)?"Direct Flight":"Connecting Flight"}</Col>
-
             <Col>
-                <button>Add to Wish List</button>
+                <button onClick={addFlightDataToWishList}>Add to Wish List</button>
             </Col>
             </Row>
         </Container>

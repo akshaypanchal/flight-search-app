@@ -1,12 +1,9 @@
 import { useState } from 'react';
-import {useDispatch} from 'react-redux';
-import {addFlightDetails} from "../../action/action";
+
 
 
 const Input = ({searchFlightDetails}) => {
 
-    // Intializing dispatch function here from useDispatch
-    const dispatch = useDispatch();
 
     // create the local store for storing the user value for origin and destination city name
     const [originCity, setOriginCity] = useState("");

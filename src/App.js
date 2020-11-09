@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Input from './components/input/input.component';
 import { useState } from 'react';
+import {useSelector} from 'react-redux';
 import axios from 'axios';
 import FlightList from './components/flightList/flightList.component';
 
@@ -10,7 +11,10 @@ function App() {
   // local store for storing the fetched flight details from the WEB API
   const [flightDetails, setFlightDetails] = useState({});
   
+  const newState  = useSelector(state=>state.flightDetails);
 
+  console.log("Updated State");
+  console.log(newState);
 
   // function for fetching the flight details from WEB API
   const searchFlightDetails = ({ originCity, destinationCity }) => {

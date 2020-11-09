@@ -10,7 +10,9 @@ const rootReducer = (state=defaultState, action) =>{
     
     switch (action.type){
         case ADD_FLIGHT_DETAILS:
-            return newState;
+            return {
+                flightDetails: [...newState.flightDetails, action.data]
+            }
 
         default: return newState;
     }
