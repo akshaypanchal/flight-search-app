@@ -2,10 +2,14 @@ import './flight.style.css';
 import {Container, Col, Row} from 'react-bootstrap';
 import {addFlightDetails} from "../../action/action";
 import {useDispatch} from 'react-redux';
+import Button from 'react-bootstrap/Button';
+import { useState } from 'react';
 
 const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight }) => {
 
     const dispatch =  useDispatch();
+
+    const [isClicked, setisClicked] = useState(false);
 
     // fetching the time stamp from the Date Object for departure
     const departureTime =  new Date(flight.OutboundLeg.DepartureDate).toLocaleTimeString('en-US');
@@ -17,7 +21,16 @@ const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight })
 
     const addFlightDataToWishList =  () =>{
 
+        if(!isClicked){
+
         dispatch(addFlightDetails({flight, originCity, destinationCity, Carriers, directFlight}));
+        setisClicked(true);
+        }
+        else{
+
+            setisClicked(false);
+        }
+
     }
 
 
@@ -43,7 +56,9 @@ const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight })
             <Col>{departureTime}</Col>
             <Col>{(directFlight)?"Direct Flight":"Connecting Flight"}</Col>
             <Col>
-                <button onClick={addFlightDataToWishList}>Add to Wish List</button>
+                <Button variant={isClicked?"danger":"primary"} onClick={addFlightDataToWishList}>
+                    {isClicked ? "Remove from List":"Add to Wish List"}
+                </Button>
             </Col>
             </Row>
         </Container>

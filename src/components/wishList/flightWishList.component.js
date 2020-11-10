@@ -1,9 +1,12 @@
 import {useSelector} from 'react-redux';
 import {Container, Row, Col} from 'react-bootstrap';
+import ScrollFlightDetails from '../scrollFlightDetail/scrollFlightDetails.component';
+import Flight from '../Flights/flight.component';
 
 const FlightWishList = () => {
 
     const selectedFlightDetails = useSelector(state=>state.flightDetails);
+    console.log('Flight Wish List');
     console.log(selectedFlightDetails);
 
     return(
@@ -27,16 +30,16 @@ const FlightWishList = () => {
 
         </Container>
 
-        {/* <ScrollFlightDetails>
+        <ScrollFlightDetails>
         {
-            flightListData.Quotes.map((flight, index) => {
-                return <Flight key={flight.QuoteId} flight={flight} index={index} originCity={flightListData.Places[0].CityName}
-                        destinationCity={flightListData.Places[1]} Carriers = {flightListData.Carriers}
-                        directFlight = {flight.Direct} 
+            selectedFlightDetails.map((flight, index) => {
+                return <Flight key={flight.flight.QuoteId} flight={flight.flight} index={index} originCity={flight.originCity}
+                        destinationCity={flight.destinationCity} Carriers = {flight.Carriers}
+                        directFlight = {flight.directFlight} 
                          />
             })
         }
-        </ScrollFlightDetails> */}
+        </ScrollFlightDetails>
 
     </div >
 

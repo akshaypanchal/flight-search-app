@@ -5,6 +5,9 @@ import './flightlist.style.css';
 
 const FlightList = ({ flightListData }) => {
 
+    console.log("inside the Flight List");
+    console.log(flightListData)
+
     return (
 
         <div>

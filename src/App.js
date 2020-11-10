@@ -4,6 +4,7 @@ import Input from './components/input/input.component';
 import { useState } from 'react';
 import axios from 'axios';
 import FlightList from './components/flightList/flightList.component';
+import FlightWishList from './components/wishList/flightWishList.component';
 
 function App() {
 
@@ -52,7 +53,8 @@ function App() {
       { (Object.keys(flightDetails).length >0) ?
         <FlightList flightListData={flightDetails} /> : null
       }
-      
+      <h1>Flight Wish List</h1>
+      <FlightWishList />
     </div>
   );
 }
