@@ -57,11 +57,11 @@ function App() {
         <FlightList flightListData={flightDetails} /> : null
       }
       <hr />
-      {/* {
+      {
 
         flighWishListArray.length!=0? <FlightWishList /> : null
       
-      } */}
+      }
       </div>
   );
 }
