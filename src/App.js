@@ -5,11 +5,14 @@ import { useState } from 'react';
 import axios from 'axios';
 import FlightList from './components/flightList/flightList.component';
 import FlightWishList from './components/wishList/flightWishList.component';
+import {useSelector} from 'react-redux';
 
 function App() {
 
   // local store for storing the fetched flight details from the WEB API
   const [flightDetails, setFlightDetails] = useState({});
+
+  const flighWishListArray = useSelector(state=>state.flightDetails); 
   
 
   // function for fetching the flight details from WEB API
@@ -53,9 +56,13 @@ function App() {
       { (Object.keys(flightDetails).length >0) ?
         <FlightList flightListData={flightDetails} /> : null
       }
-      <h1>Flight Wish List</h1>
-      <FlightWishList />
-    </div>
+      <hr />
+      {/* {
+
+        flighWishListArray.length!=0? <FlightWishList /> : null
+      
+      } */}
+      </div>
   );
 }
 

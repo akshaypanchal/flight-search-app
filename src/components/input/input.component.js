@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import './input.style.css';
 
 
 
@@ -44,16 +45,16 @@ const Input = ({searchFlightDetails}) => {
     }
  
     return (
-        <Form>
+        <div>
             {/* creating the input and button for  user interaction */}
-            <Form.Label>Origin: </Form.Label>
-            <Form.Control id="originCity" onChange={addOriginCity} placeholder="Enter the City" value={originCity} required />
-            <Form.Label>Destination: </Form.Label>
-            <Form.Control id="destinationCity" onChange={addDestinationCity} placeholder="Enter the City" value={destinationCity} required/>
-            <Form.Label>Departure Date:</Form.Label>
-            <Form.Control id="departureDate" placeholder="yyyy/mm/dd"  onChange={addDepartureDate} value={departureDate}/>
+            <label>Origin: </label>
+            <input id="originCity" onChange={addOriginCity} placeholder="Enter the City" value={originCity} required />
+            <label>Destination: </label>
+            <input id="destinationCity" onChange={addDestinationCity} placeholder="Enter the City" value={destinationCity} required/>
+            <label>Departure Date:</label>
+            <input id="departureDate" placeholder="yyyy/mm/dd"  onChange={addDepartureDate} value={departureDate}/>
             <Button variant="success" onClick={addFlightDetails}>Search the Flights</Button>
-        </Form>
+        </div>
     );
 }
 

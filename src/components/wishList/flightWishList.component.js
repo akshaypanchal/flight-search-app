@@ -12,9 +12,9 @@ const FlightWishList = () => {
     return(
 
         <div>
-        <h3>Flight Wish List Details:</h3>
 
         <Container className="container">
+            <h1>Flight Wish List</h1>
             <Row>
 
                     <Col>#</Col>
