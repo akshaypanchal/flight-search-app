@@ -35,7 +35,7 @@ const Flight = ({ flight, originCity, destinationCity, Carriers, directFlight })
 
 
     return (
-        <Container className="container" >
+        <Container className="flightListContainer" >
         <Row>
             <Col>{flight.QuoteId}</Col>
             <Col>{originCity}</Col>

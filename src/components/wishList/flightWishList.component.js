@@ -2,12 +2,11 @@ import {useSelector} from 'react-redux';
 import {Container, Row, Col} from 'react-bootstrap';
 import ScrollFlightDetails from '../scrollFlightDetail/scrollFlightDetails.component';
 import Flight from '../Flights/flight.component';
+import './flightWishList.style.css';
 
 const FlightWishList = () => {
 
     const selectedFlightDetails = useSelector(state=>state.flightDetails);
-    console.log('Flight Wish List');
-    console.log(selectedFlightDetails);
 
     return(
 
@@ -17,15 +16,15 @@ const FlightWishList = () => {
             <h1>Flight Wish List</h1>
             <Row>
 
-                    <Col>#</Col>
-                    <Col>Origin City</Col>
-                    <Col>Destination City</Col>
-                    <Col>Minimum Price</Col>
-                    <Col>Carrier Name</Col>
-                    <Col>Departure Date</Col>
-                    <Col>Departure Time</Col>
-                    <Col>Flight Type</Col>
-                    <Col>#</Col>
+            <Col className="header">#</Col>
+                        <Col className="header">Origin City</Col>
+                        <Col className="header">Destination City</Col>
+                        <Col className="header">Minimum Price</Col>
+                        <Col className="header">Carrier Name</Col>
+                        <Col className="header">Departure Date</Col>
+                        <Col className="header">Departure Time</Col>
+                        <Col className="header">Flight Type</Col>
+                        <Col className="header">#</Col>
             </Row>
 
         </Container>

@@ -1,8 +1,9 @@
-.container {
+.flightListContainer {
+    margin-top: 5px;
     margin-bottom: 5px;
-
+    font-weight: normal;
 }
 
-.container:hover{
+.flightListContainer:hover{
     color:red;
 }
